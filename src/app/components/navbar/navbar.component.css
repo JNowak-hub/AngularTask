@@ -1,0 +1,36 @@
+@media (max-width: 768px){
+
+}
+@media (min-width: 769px) {
+  .navBar {
+    height: 55px;
+    background: rgb(41, 80, 109);
+    border: 3px solid #809aad;
+    box-sizing: border-box;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25), 0 4px 4px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .buttonDiv:hover{
+    cursor: pointer;
+    color: #809aad;
+    background: #0F344F;
+  }
+  .buttonDiv:active{
+    background: #052232;
+    cursor: pointer;
+    color: #809aad;
+  }
+  .buttonDiv{
+    padding: 10px;
+    background: #BAD0E0;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.74);
+    border-radius: 30px;
+    color: #031D31;
+  }
+
+}
+
+
