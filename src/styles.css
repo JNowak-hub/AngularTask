@@ -1,4 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
 body{
   margin: 0;
+  background-image: url("writing.jpg");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+input{
+  background-color: #102256;
+  color: white;
+}
+select{
+  background-color: #102256;
+  color: white;
 }

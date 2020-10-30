@@ -6,6 +6,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { RegisterComponent } from './components/register/register.component';
 import { ClockComponent } from './components/clock/clock.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import {FormsModule} from '@angular/forms';
+import { SubcategoryselectComponent } from './components/subcategoryselect/subcategoryselect.component';
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent }
@@ -17,12 +19,14 @@ const routes: Routes = [
     AppComponent,
     RegisterComponent,
     ClockComponent,
-    NavbarComponent
+    NavbarComponent,
+    SubcategoryselectComponent
   ],
-  imports: [
-    BrowserModule,
-    RouterModule.forRoot(routes)
-  ],
+    imports: [
+        BrowserModule,
+        RouterModule.forRoot(routes),
+        FormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

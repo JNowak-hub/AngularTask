@@ -1,0 +1,5 @@
+  <label>Select industry subcategory</label>
+  <br>
+  <select name="subcategorySelect" [(ngModel)]="selectedSubcategory" (change)="emmitValue(selectedSubcategory)">
+    <option *ngFor="let subcat of selectedIndustry.subcategory" [ngValue]="subcat">{{subcat}}</option>
+  </select>
