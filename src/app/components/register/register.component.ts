@@ -15,7 +15,7 @@ export class RegisterComponent implements OnInit {
   name: string;
   lastName: string;
   birthDate: string;
-  selectedIndustry: Industry;
+  selectedIndustry: Industry = new Media();
   selectedSubcategory = '';
   telephoneNumber: number;
   password: string;
@@ -39,7 +39,6 @@ export class RegisterComponent implements OnInit {
     this.validateEmail(this.email);
     this.validateAge(this.birthDate);
     this.validatePhoneNumber(this.telephoneNumber);
-    console.log(this.telephoneNumber);
     console.log(this.selectedSubcategory);
     console.log(this.selectedIndustry);
     console.log(this.lastName);
@@ -86,8 +85,15 @@ export class RegisterComponent implements OnInit {
   }
 
   private validatePhoneNumber(telephoneNumber: number): boolean {
-    const reg = new RegExp(/d{9}/i);
-    if (telephoneNumber.toString().search(reg)){
+    const reg = new RegExp('^\\d{9}$');
+    const stringNumber = telephoneNumber.toString();
+    for (let i = 0; i < stringNumber.length; i++) {
+      if (stringNumber.charAt(i) === ' ') {
+        alert('phone number cannot consists white characters');
+        return false;
+      }
+    }
+    if (stringNumber.search(reg) !== -1 && stringNumber.charAt(0) !== '0'){
       return true;
     }
     alert('Wrong phone number format');

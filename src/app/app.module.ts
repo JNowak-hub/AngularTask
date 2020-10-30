@@ -8,9 +8,11 @@ import { ClockComponent } from './components/clock/clock.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import {FormsModule} from '@angular/forms';
 import { SubcategoryselectComponent } from './components/subcategoryselect/subcategoryselect.component';
+import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
-  { path: 'register', component: RegisterComponent }
+  { path: 'register', component: RegisterComponent },
+  { path: '', component: HomeComponent}
 ];
 
 @NgModule({
@@ -20,7 +22,8 @@ const routes: Routes = [
     RegisterComponent,
     ClockComponent,
     NavbarComponent,
-    SubcategoryselectComponent
+    SubcategoryselectComponent,
+    HomeComponent
   ],
     imports: [
         BrowserModule,
