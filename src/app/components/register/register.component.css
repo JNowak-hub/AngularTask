@@ -5,11 +5,17 @@
 @media (min-width: 769px) {
 
 
+  .register{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
   form
   {
-    margin-left: 5%;
     margin-top: 5%;
-    padding: 30px;
+    padding: 35px;
+    padding-left: 60px;
     width: 200px;
     display: flex;
     flex-direction: column;
@@ -20,6 +26,11 @@
   }
   .inputElement{
     color: #BAD0E0;
+    font-weight: bold;
+    padding-top: 8px;
+  }
+  .wrongInput{
+    color: red;
     font-weight: bold;
     padding-top: 8px;
   }

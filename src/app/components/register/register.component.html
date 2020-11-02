@@ -1,53 +1,56 @@
-<form (ngSubmit)="onSubmit()">
-  <div class="inputElement">
-    <label>Insert email address</label>
-    <br>
-    <input type="email" name="email" [(ngModel)]="email">
-  </div>
+<div class="register">
+  <form (ngSubmit)="onSubmit()">
+    <div [className]="emailIsValid ? 'inputElement' : 'wrongInput'">
+      <label>Insert email address</label>
+      <br>
+      <input type="email" name="email" [(ngModel)]="email">
+    </div>
 
-  <div class="inputElement">
-    <label>Insert password</label>
-    <br>
-    <input type="password" name="password" [(ngModel)]="password">
-  </div>
+    <div [className]="passwordIsValid ? 'inputElement' : 'wrongInput'">
+      <label>Insert password</label>
+      <br>
+      <input type="password" name="password" [(ngModel)]="password">
+    </div>
 
-  <div class="inputElement">
-    <label>Insert name</label>
-    <br>
-    <input type="text" name="fname" [(ngModel)]="name">
-  </div>
+    <div [className]="nameIsValid ? 'inputElement' : 'wrongInput'">
+      <label>Insert name</label>
+      <br>
+      <input type="text" name="fname" [(ngModel)]="name">
+    </div>
 
-  <div class="inputElement">
-    <label>Insert last name</label>
-    <br>
-    <input type="text" name="lname" [(ngModel)]="lastName">
-  </div>
+    <div [className]="lastNameIsValid ? 'inputElement' : 'wrongInput'">
+      <label>Insert last name</label>
+      <br>
+      <input type="text" name="lname" [(ngModel)]="lastName">
+    </div>
 
-  <div class="inputElement">
-    <label>Enter birth date</label>
-    <br>
-    <input type="date" name="birthDate" [(ngModel)]="birthDate">
-  </div>
+    <div [className]="birthdayIsValid ? 'inputElement' : 'wrongInput'">
+      <label>Enter birth date</label>
+      <br>
+      <input type="date" name="birthDate" [(ngModel)]="birthDate">
+    </div>
 
-  <div class="inputElement">
-    <label>Select industry</label>
-    <br>
-    <select name="industrySelect" [(ngModel)]="selectedIndustry">
-      <option *ngFor="let industry of industries" [ngValue]="industry">{{industry.name}}</option>
-    </select>
-  </div>
+    <div class="inputElement">
+      <label>Select industry</label>
+      <br>
+      <select name="industrySelect" [(ngModel)]="selectedIndustry">
+        <option *ngFor="let industry of industries" [ngValue]="industry">{{industry.name}}</option>
+      </select>
+    </div>
 
-  <div class="inputElement">
-    <app-subcategoryselect (subcategory)="logEmit($event)" [selectedIndustry]="selectedIndustry"></app-subcategoryselect>
-  </div>
+    <div class="inputElement">
+      <app-subcategoryselect (subcategory)="logEmit($event)"
+                             [selectedIndustry]="selectedIndustry"></app-subcategoryselect>
+    </div>
 
-  <div class="inputElement">
-    <label>Enter phone number</label>
-    <br>
-    <input type="tel" name="phoneNumber" [(ngModel)]="telephoneNumber">
-  </div>
+    <div [className]="telephoneNumberIsValid ? 'inputElement' : 'wrongInput'">
+      <label>Enter phone number</label>
+      <br>
+      <input type="tel" name="phoneNumber" [(ngModel)]="telephoneNumber">
+    </div>
 
-  <div class="inputElement">
-  <input type="submit">
-  </div>
-</form>
+    <div class="inputElement">
+      <input type="submit">
+    </div>
+  </form>
+</div>

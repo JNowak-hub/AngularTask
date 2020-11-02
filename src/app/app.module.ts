@@ -1,18 +1,21 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AppComponent } from './app.component';
-import { Routes, RouterModule } from '@angular/router';
-import { RegisterComponent } from './components/register/register.component';
-import { ClockComponent } from './components/clock/clock.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
+import {AppComponent} from './app.component';
+import {RouterModule, Routes} from '@angular/router';
+import {RegisterComponent} from './components/register/register.component';
+import {ClockComponent} from './components/clock/clock.component';
+import {NavbarComponent} from './components/navbar/navbar.component';
 import {FormsModule} from '@angular/forms';
-import { SubcategoryselectComponent } from './components/subcategoryselect/subcategoryselect.component';
-import { HomeComponent } from './components/home/home.component';
+import {SubcategoryselectComponent} from './components/subcategoryselect/subcategoryselect.component';
+import {HomeComponent} from './components/home/home.component';
+import {HttpClientModule} from '@angular/common/http';
+import { ControllPanelComponent } from './components/controll-panel/controll-panel.component';
 
 const routes: Routes = [
-  { path: 'register', component: RegisterComponent },
-  { path: '', component: HomeComponent}
+  {path: 'register', component: RegisterComponent},
+  {path: '', component: HomeComponent},
+  {path: 'controlPanel', component: ControllPanelComponent}
 ];
 
 @NgModule({
@@ -23,14 +26,17 @@ const routes: Routes = [
     ClockComponent,
     NavbarComponent,
     SubcategoryselectComponent,
-    HomeComponent
+    HomeComponent,
+    ControllPanelComponent,
   ],
-    imports: [
-        BrowserModule,
-        RouterModule.forRoot(routes),
-        FormsModule
-    ],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    RouterModule.forRoot(routes),
+    FormsModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
