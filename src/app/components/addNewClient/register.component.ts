@@ -58,7 +58,7 @@ export class RegisterComponent implements OnInit {
           telephoneNumber: this.telephoneNumber
         }
       };
-      this.clientService.createNewClient(newClient);
+      this.clientService.createNewClient(newClient).subscribe(res => alert('created new client with id: ' + res.id));
       this.email = '';
       this.name = '';
       this.lastName = '';

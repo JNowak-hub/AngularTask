@@ -3,51 +3,44 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {ClientModel} from '../../models/ClientModel';
 import {catchError} from 'rxjs/operators';
 import {Router} from '@angular/router';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClientService {
 
-  clients: ClientModel[] = [];
-
   constructor(private httpClient: HttpClient, private router: Router) { }
 
-  getClients(): ClientModel[] {
-    this.getClientsFromApi();
-    return this.clients;
-  }
-  deleteClient(client: ClientModel, clientsList: ClientModel[]): void{
+  deleteClient(client: ClientModel, clientsList: ClientModel[]): Observable<[]>{
+    console.log(client.id);
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         Authorization: 'Bearer ' + localStorage.getItem('token')
       })
     };
-    this.httpClient.delete('http://localhost:3000/660/clients/' + client.id, httpOptions);
     clientsList.splice(client.id - 1, 1);
+    return this.httpClient.delete('http://localhost:3000/660/clients/' + client.id, httpOptions) as Observable<[]>;
   }
-  createNewClient(newClient: ClientModel): void {
+  createNewClient(newClient: ClientModel): Observable<ClientModel> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         Authorization: 'Bearer ' + localStorage.getItem('token')
       })
     };
-    this.httpClient.post<ClientModel>('http://localhost:3000/660/clients', newClient, httpOptions)
-      .subscribe(client => {
-        console.log(client);
-      });
+    return this.httpClient.post<ClientModel>('http://localhost:3000/660/clients', newClient, httpOptions) as Observable<ClientModel>;
   }
 
-  private  getClientsFromApi(): void {
+  getClientsFromApi(): Observable<ClientModel[]> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         Authorization: 'Bearer ' + localStorage.getItem('token')
       })
     };
-    this.httpClient.get<ClientModel[]>(`http://localhost:3000/660/clients`, httpOptions)
+    return this.httpClient.get<ClientModel[]>(`http://localhost:3000/660/clients`, httpOptions)
       .pipe(
         catchError(err => {
           if (err.status === 401){
@@ -60,9 +53,6 @@ export class ClientService {
             return [];
           }
         })
-      )
-      .subscribe(res => {
-        this.clients = res;
-      });
+      ) as Observable<ClientModel[]>;
   }
 }

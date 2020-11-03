@@ -1,8 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Component, OnInit} from '@angular/core';
 import {ClientModel} from '../../models/ClientModel';
-import {catchError} from 'rxjs/operators';
-import {Router} from '@angular/router';
 import {Industry} from '../../models/industry/Industry';
 import {Media} from '../../models/industry/subcategories/Media';
 import {Travel} from '../../models/industry/subcategories/Travel';
@@ -22,11 +19,11 @@ export class ControllPanelComponent implements OnInit {
   selectedIndustry: Industry;
   selectedSubcategory: string;
 
-  constructor(private clientService: ClientService, private httpClient: HttpClient, private router: Router) { }
+  constructor(private clientService: ClientService) {
+  }
 
   ngOnInit(): void {
-    console.log(this.clients);
-    this.clients = this.clientService.getClients();
+    this.clientService.getClientsFromApi().subscribe(res => this.clients = res);
   }
 
   logEmit(value: string): void {
@@ -40,9 +37,16 @@ export class ControllPanelComponent implements OnInit {
   }
 
   isIndustrySelected(): boolean {
-    if (typeof this.selectedIndustry !== 'undefined'){
+    if (typeof this.selectedIndustry !== 'undefined') {
       return true;
     }
     return false;
+  }
+
+  deleteClient(client: ClientModel): void {
+    console.log(client);
+    this.clientService.deleteClient(client, this.clients).subscribe();
+    console.log(this.clients);
+    this.ngOnInit();
   }
 }

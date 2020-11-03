@@ -21,7 +21,7 @@
     </div>
   </div>
   <div *ngFor="let client of clients">
-    <app-client [user]="client" (deleteUser)="clientService.deleteClient(client, clients)"></app-client>
+    <app-client [user]="client" (deleteUser)="deleteClient(client)"></app-client>
   </div>
 
 </div>
