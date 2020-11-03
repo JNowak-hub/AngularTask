@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {ClientModel} from '../models/ClientModel';
+import {ClientModel} from '../../models/ClientModel';
 import {catchError} from 'rxjs/operators';
 import {Router} from '@angular/router';
-import {Industry} from '../models/industry/Industry';
-import {Media} from '../models/industry/media/Media';
-import {Travel} from '../models/industry/travel/Travel';
-import {Finances} from '../models/industry/finances/Finances';
+import {Industry} from '../../models/industry/Industry';
+import {Media} from '../../models/industry/subcategories/Media';
+import {Travel} from '../../models/industry/subcategories/Travel';
+import {Finances} from '../../models/industry/subcategories/Finances';
 import {ClientService} from '../../services/client/client.service';
 
 @Component({

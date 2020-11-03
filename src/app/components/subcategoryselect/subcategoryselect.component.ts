@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Industry} from '../models/industry/Industry';
+import {Industry} from '../../models/industry/Industry';
 
 @Component({
   selector: 'app-subcategoryselect',

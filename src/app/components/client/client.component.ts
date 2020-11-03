@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {ClientModel} from '../models/ClientModel';
+import {ClientModel} from '../../models/ClientModel';
 import {ControlValueAccessor} from '@angular/forms';
 
 @Component({

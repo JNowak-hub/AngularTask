@@ -1,12 +1,13 @@
 import {Component, OnInit} from '@angular/core';
-import {Media} from '../models/industry/media/Media';
-import {Travel} from '../models/industry/travel/Travel';
-import {Finances} from '../models/industry/finances/Finances';
-import {Industry} from '../models/industry/Industry';
+import {Media} from '../../models/industry/subcategories/Media';
+import {Travel} from '../../models/industry/subcategories/Travel';
+import {Finances} from '../../models/industry/subcategories/Finances';
+import {Industry} from '../../models/industry/Industry';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {ClientModel} from '../models/ClientModel';
-import {TokenModel} from '../models/industry/TokenModel';
+import {ClientModel} from '../../models/ClientModel';
+import {TokenModel} from '../../models/TokenModel';
 import {Router} from '@angular/router';
+import {ClientService} from '../../services/client/client.service';
 
 @Component({
   selector: 'app-register',
@@ -31,8 +32,7 @@ export class RegisterComponent implements OnInit {
   lastNameIsValid = true;
   industries = [new Media(), new Travel(), new Finances()];
 
-  constructor(httpClient: HttpClient) {
-    this.httpClient = httpClient;
+  constructor(private clientService: ClientService) {
   }
 
   ngOnInit(): void {
@@ -58,16 +58,7 @@ export class RegisterComponent implements OnInit {
           telephoneNumber: this.telephoneNumber
         }
       };
-      const httpOptions = {
-        headers: new HttpHeaders({
-          'Content-Type': 'application/json',
-          Authorization: 'Bearer ' + localStorage.getItem('token')
-        })
-      };
-      this.httpClient.post<ClientModel>('http://localhost:3000/660/clients', newClient, httpOptions)
-        .subscribe(client => {
-          console.log(client);
-        });
+      this.clientService.createNewClient(newClient);
       this.email = '';
       this.name = '';
       this.lastName = '';

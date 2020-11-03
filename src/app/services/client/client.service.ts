@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {ClientModel} from '../../components/models/ClientModel';
+import {ClientModel} from '../../models/ClientModel';
 import {catchError} from 'rxjs/operators';
 import {Router} from '@angular/router';
 
@@ -26,6 +26,18 @@ export class ClientService {
     };
     this.httpClient.delete('http://localhost:3000/660/clients/' + client.id, httpOptions);
     clientsList.splice(client.id - 1, 1);
+  }
+  createNewClient(newClient: ClientModel): void {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + localStorage.getItem('token')
+      })
+    };
+    this.httpClient.post<ClientModel>('http://localhost:3000/660/clients', newClient, httpOptions)
+      .subscribe(client => {
+        console.log(client);
+      });
   }
 
   private  getClientsFromApi(): void {

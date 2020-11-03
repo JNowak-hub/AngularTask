@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import {TokenModel} from '../../components/models/industry/TokenModel';
+import {TokenModel} from '../../models/TokenModel';
 import {HttpClient} from '@angular/common/http';
-import {UserModel} from '../../components/models/UserModel';
+import {UserModel} from '../../models/UserModel';
 import {Router} from '@angular/router';
 
 @Injectable({
