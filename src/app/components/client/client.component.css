@@ -1,0 +1,43 @@
+@media (max-width: 768px) {
+
+}
+
+@media (min-width: 769px) {
+.userElement{
+  padding: 20px;
+  height: 100px;
+  background: #24557A;
+  border-radius: 20px;
+  border-style: groove;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+  .infoElement{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 5px;
+    margin: 5px;
+    border: #031D31;
+    border-radius: 2px;
+    background: #BAD0E0;
+    color: #031D31;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.74);
+  }
+  button{
+    background: #BAD0E0;
+    color: #031D31;
+  }
+  button:hover {
+    cursor: pointer;
+    color: #809aad;
+    background: #0F344F;
+  }
+  .buttonDiv:active{
+    background: #052232;
+    cursor: pointer;
+    color: #809aad;
+  }
+}

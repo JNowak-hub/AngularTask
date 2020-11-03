@@ -1,1 +1,27 @@
-<p>controll-panel works!</p>
+<div class="controlPanelMainDiv">
+  <div class="toolsDiv">
+    <button [routerLink]="['/controlPanel/addClient']">Add new Client</button>
+    <div class="inputElement">
+      <label>Select industry</label>
+      <br>
+      <select name="industrySelect" [(ngModel)]="selectedIndustry">
+        <option *ngFor="let industry of industries" [ngValue]="industry">{{industry.name}}</option>
+      </select>
+    </div>
+
+    <div class="inputElement" *ngIf="isIndustrySelected()">
+      <app-subcategoryselect (subcategory)="logEmit($event)"
+                             [selectedIndustry]="selectedIndustry"></app-subcategoryselect>
+    </div>
+    <button (click)="filterByIndustryAndCategory(selectedIndustry, selectedSubcategory)">filter</button>
+    <div>
+      <label>Search</label>
+      <input type="search" name="search" [ngModel]="searchString">
+      <button>search</button>
+    </div>
+  </div>
+  <div *ngFor="let client of clients">
+    <app-client [user]="client" (deleteUser)="clientService.deleteClient(client, clients)"></app-client>
+  </div>
+
+</div>

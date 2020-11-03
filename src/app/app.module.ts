@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 
 import {AppComponent} from './app.component';
 import {RouterModule, Routes} from '@angular/router';
-import {RegisterComponent} from './components/register/register.component';
+import {RegisterComponent} from './components/addNewClient/register.component';
 import {ClockComponent} from './components/clock/clock.component';
 import {NavbarComponent} from './components/navbar/navbar.component';
 import {FormsModule} from '@angular/forms';
@@ -11,11 +11,16 @@ import {SubcategoryselectComponent} from './components/subcategoryselect/subcate
 import {HomeComponent} from './components/home/home.component';
 import {HttpClientModule} from '@angular/common/http';
 import { ControllPanelComponent } from './components/controll-panel/controll-panel.component';
+import { RegisterUserComponent } from './components/register-user/register-user.component';
+import { LoginComponent } from './components/login/login.component';
+import { ClientComponent } from './components/client/client.component';
 
 const routes: Routes = [
-  {path: 'register', component: RegisterComponent},
+  {path: 'controlPanel/addClient', component: RegisterComponent},
   {path: '', component: HomeComponent},
-  {path: 'controlPanel', component: ControllPanelComponent}
+  {path: 'controlPanel', component: ControllPanelComponent},
+  {path: 'register', component: RegisterUserComponent},
+  {path: 'login', component: LoginComponent}
 ];
 
 @NgModule({
@@ -28,6 +33,9 @@ const routes: Routes = [
     SubcategoryselectComponent,
     HomeComponent,
     ControllPanelComponent,
+    RegisterUserComponent,
+    LoginComponent,
+    ClientComponent,
   ],
   imports: [
     BrowserModule,

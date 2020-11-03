@@ -1,0 +1,17 @@
+<div class="register" (submit)="onSubmit()">
+  <form>
+    <div [className]="emailIsValid ? 'inputElement' : 'wrongInput'">
+      <label>Insert email</label>
+      <br>
+      <input type="email" name="email" [(ngModel)]="email">
+    </div>
+    <div [className]="passwordIsValid ? 'inputElement' : 'wrongInput'">
+      <label>Insert password</label>
+      <br>
+      <input type="password" name="password" [(ngModel)]="password">
+    </div>
+    <div class="inputElement">
+      <input type="submit" value="Login">
+    </div>
+  </form>
+</div>

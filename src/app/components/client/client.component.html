@@ -1,0 +1,21 @@
+<div class="userElement">
+  <div class="infoElement">
+    <label>name : {{user.clientInfo.firstName}}</label>
+  </div>
+  <div class="infoElement">
+    <label>last name : {{user.clientInfo.lastName}}</label>
+  </div>
+  <div class="infoElement">
+    <label>birthday : {{user.clientInfo.birthDay}}</label>
+  </div>
+  <div class="infoElement">
+    <label>industry : {{user.clientInfo.industry}}/ category : {{user.clientInfo.subCategory}}</label>
+  </div>
+  <div class="infoElement">
+    <label>phone number : {{user.clientInfo.telephoneNumber}}</label>
+  </div>
+  <div class="infoElement">
+    <label>email : {{user.email}}</label>
+  </div>
+    <button (click)="deleteClient()">Delete client</button>
+</div>

@@ -3,8 +3,8 @@ import {Media} from '../models/industry/media/Media';
 import {Travel} from '../models/industry/travel/Travel';
 import {Finances} from '../models/industry/finances/Finances';
 import {Industry} from '../models/industry/Industry';
-import {HttpClient} from '@angular/common/http';
-import {UserModel} from '../models/UserModel';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {ClientModel} from '../models/ClientModel';
 import {TokenModel} from '../models/industry/TokenModel';
 import {Router} from '@angular/router';
 
@@ -23,9 +23,7 @@ export class RegisterComponent implements OnInit {
   selectedIndustry: Industry = new Media();
   selectedSubcategory = '';
   telephoneNumber: number;
-  password: string;
 
-  passwordIsValid = true;
   emailIsValid = true;
   birthdayIsValid = true;
   telephoneNumberIsValid = true;
@@ -33,7 +31,7 @@ export class RegisterComponent implements OnInit {
   lastNameIsValid = true;
   industries = [new Media(), new Travel(), new Finances()];
 
-  constructor(httpClient: HttpClient, private router: Router) {
+  constructor(httpClient: HttpClient) {
     this.httpClient = httpClient;
   }
 
@@ -48,9 +46,9 @@ export class RegisterComponent implements OnInit {
 
   onSubmit(): void {
     if (this.isFormValid()) {
-      const newUser: UserModel = {
+      const newClient: ClientModel = {
         email: this.email,
-        password: this.password,
+        id: null,
         clientInfo: {
           firstName: this.name,
           lastName: this.lastName,
@@ -60,23 +58,28 @@ export class RegisterComponent implements OnInit {
           telephoneNumber: this.telephoneNumber
         }
       };
-      this.httpClient.post<TokenModel>('http://localhost:3000/register', newUser)
-        .subscribe(token => {
-          localStorage.setItem('token', token.accessToken);
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          Authorization: 'Bearer ' + localStorage.getItem('token')
+        })
+      };
+      this.httpClient.post<ClientModel>('http://localhost:3000/660/clients', newClient, httpOptions)
+        .subscribe(client => {
+          console.log(client);
         });
-      this.router.navigate(['/controlPanel']);
+      this.email = '';
+      this.name = '';
+      this.lastName = '';
+      this.telephoneNumber = null;
+      this.birthDate = null;
     }
   }
 
   private isFormValid(): boolean {
     if (!this.validatePhoneNumber(this.telephoneNumber) || !this.validateAge(this.birthDate)
-      || !this.validateEmail(this.email) || !this.validatePassword(this.password) ||
+      || !this.validateEmail(this.email) ||
       !this.validNameOrLastName(this.name) || !this.validNameOrLastName(this.lastName)) {
-      if (!this.validatePassword(this.password)) {
-        this.passwordIsValid = false;
-      } else {
-        this.passwordIsValid = true;
-      }
       if (!this.validateEmail(this.email)) {
         this.emailIsValid = false;
       } else {
@@ -107,21 +110,6 @@ export class RegisterComponent implements OnInit {
     return true;
   }
 
-  private validatePassword(password: string): boolean {
-    if (typeof password !== 'undefined') {
-      for (let i = 0; i < password.length; i++) {
-        if (password.charAt(i) === ' ') {
-          alert('Password cannot consists white characters');
-          return false;
-        }
-      }
-      if (password.length > 8) {
-        return true;
-      }
-    }
-    alert('Password is to short must have at least 8 characters');
-    return false;
-  }
 
   private validateEmail(email: string): boolean {
     if (typeof email === 'undefined') {

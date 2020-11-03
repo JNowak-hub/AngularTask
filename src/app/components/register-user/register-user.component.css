@@ -1,0 +1,37 @@
+@media (max-width: 768px) {
+
+}
+
+@media (min-width: 769px) {
+
+
+  .register{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  form
+  {
+    margin-top: 5%;
+    padding: 35px;
+    padding-left: 60px;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background: rgba(41, 80, 109, 0.67);
+    border: 3px solid #809aad;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25), 0 4px 4px rgba(0, 0, 0, 0.25);
+  }
+  .inputElement{
+    color: #BAD0E0;
+    font-weight: bold;
+    padding-top: 8px;
+  }
+  .wrongInput{
+    color: red;
+    font-weight: bold;
+    padding-top: 8px;
+  }
+}

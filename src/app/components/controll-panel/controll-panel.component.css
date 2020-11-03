@@ -1,0 +1,28 @@
+.controlPanelMainDiv{
+  display: flex;
+  align-items: center;
+  flex-flow: column;
+  justify-content: center;
+  margin: 20px;
+}
+.toolsDiv{
+  display: flex;
+  flex-flow: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+button{
+  height: 50px;
+  background: #BAD0E0;
+  color: #031D31;
+}
+button:hover {
+  cursor: pointer;
+  color: #809aad;
+  background: #0F344F;
+}
+.buttonDiv:active{
+  background: #052232;
+  cursor: pointer;
+  color: #809aad;
+}
