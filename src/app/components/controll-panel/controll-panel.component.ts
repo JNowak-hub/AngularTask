@@ -44,9 +44,7 @@ export class ControllPanelComponent implements OnInit {
   }
 
   deleteClient(client: ClientModel): void {
-    console.log(client);
     this.clientService.deleteClient(client, this.clients).subscribe();
-    console.log(this.clients);
     this.ngOnInit();
   }
 }

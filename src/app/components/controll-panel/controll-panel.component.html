@@ -20,6 +20,7 @@
       <button>search</button>
     </div>
   </div>
+
   <div *ngFor="let client of clients">
     <app-client [user]="client" (deleteUser)="deleteClient(client)"></app-client>
   </div>

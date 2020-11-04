@@ -5,8 +5,6 @@ import {Finances} from '../../models/industry/subcategories/Finances';
 import {Industry} from '../../models/industry/Industry';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {ClientModel} from '../../models/ClientModel';
-import {TokenModel} from '../../models/TokenModel';
-import {Router} from '@angular/router';
 import {ClientService} from '../../services/client/client.service';
 
 @Component({
@@ -36,12 +34,10 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.industries);
   }
 
   logEmit(value: string): void {
     this.selectedSubcategory = value;
-    console.log(this.selectedSubcategory);
   }
 
   onSubmit(): void {
@@ -67,7 +63,7 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  private isFormValid(): boolean {
+  isFormValid(): boolean {
     if (!this.validatePhoneNumber(this.telephoneNumber) || !this.validateAge(this.birthDate)
       || !this.validateEmail(this.email) ||
       !this.validNameOrLastName(this.name) || !this.validNameOrLastName(this.lastName)) {
