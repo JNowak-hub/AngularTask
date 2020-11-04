@@ -18,6 +18,7 @@ export class ControllPanelComponent implements OnInit {
   industries: Industry[] = [new Media(), new Travel(), new Finances()];
   selectedIndustry: Industry;
   selectedSubcategory: string;
+  p = 1;
 
   constructor(private clientService: ClientService) {
   }

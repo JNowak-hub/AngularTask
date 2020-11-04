@@ -109,7 +109,7 @@ describe('RegisterComponent', () => {
     expect(component.isFormValid()).toBeFalse();
   });
 
-  it('when submit button clicked onSubmit called', () => {
+  it('when submit button clicked onSubmit called', () =>{
     spyOn(component, 'onSubmit');
     const submit = de.query(By.css('input[type="submit"]')).nativeElement;
     submit.click();
@@ -120,7 +120,7 @@ describe('RegisterComponent', () => {
   });
 
   it('when submit button clicked validation called', () => {
-    spyOn(component, 'isFormValid');
+    spyOn(component, 'onSubmit');
     const submit = de.query(By.css('input[type="submit"]')).nativeElement;
     submit.click();
 
@@ -137,7 +137,7 @@ describe('RegisterComponent', () => {
     component.selectedIndustry = new Media();
     component.selectedSubcategory = 'Tv';
     component.telephoneNumber = 123123123;
-    expect(component.isFormValid()).toBeTruthy();
+    expect(component.isFormValid).toBeTruthy();
   });
 
   it('should have labels', () => {

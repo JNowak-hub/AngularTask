@@ -13,7 +13,8 @@ import {HttpClientModule} from '@angular/common/http';
 import { ControllPanelComponent } from './components/controll-panel/controll-panel.component';
 import { RegisterUserComponent } from './components/register-user/register-user.component';
 import { LoginComponent } from './components/login/login.component';
-import { ClientComponent } from './components/client/client.component';
+import {Ng2SearchPipeModule} from 'ng2-search-filter';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 const routes: Routes = [
   {path: 'controlPanel/addClient', component: RegisterComponent},
@@ -34,14 +35,15 @@ const routes: Routes = [
     HomeComponent,
     ControllPanelComponent,
     RegisterUserComponent,
-    LoginComponent,
-    ClientComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
-    FormsModule
+    FormsModule,
+    Ng2SearchPipeModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

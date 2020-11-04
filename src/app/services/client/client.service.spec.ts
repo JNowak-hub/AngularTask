@@ -5,6 +5,7 @@ import {HttpClientTestingModule, HttpTestingController} from '@angular/common/ht
 import {RouterTestingModule} from '@angular/router/testing';
 import {ClientModel} from '../../models/ClientModel';
 import {HttpErrorResponse} from '@angular/common/http';
+import {LoginComponent} from '../../components/login/login.component';
 
 describe('ClientService', () => {
   let service: ClientService;
@@ -12,7 +13,11 @@ describe('ClientService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule, RouterTestingModule]
+      imports: [HttpClientTestingModule, RouterTestingModule.withRoutes(
+        [
+          {path: 'login', component: LoginComponent}
+        ]
+      )]
     });
     service = TestBed.inject(ClientService);
     httpMock = getTestBed().get(HttpTestingController);

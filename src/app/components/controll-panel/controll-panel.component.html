@@ -1,28 +1,35 @@
 <div class="controlPanelMainDiv">
   <div class="toolsDiv">
     <button [routerLink]="['/controlPanel/addClient']">Add new Client</button>
-    <div class="inputElement">
-      <label>Select industry</label>
-      <br>
-      <select name="industrySelect" [(ngModel)]="selectedIndustry">
-        <option *ngFor="let industry of industries" [ngValue]="industry">{{industry.name}}</option>
-      </select>
-    </div>
-
-    <div class="inputElement" *ngIf="isIndustrySelected()">
-      <app-subcategoryselect (subcategory)="logEmit($event)"
-                             [selectedIndustry]="selectedIndustry"></app-subcategoryselect>
-    </div>
-    <button (click)="filterByIndustryAndCategory(selectedIndustry, selectedSubcategory)">filter</button>
-    <div>
-      <label>Search</label>
-      <input type="search" name="search" [ngModel]="searchString">
-      <button>search</button>
-    </div>
+    <label>Search</label>
+      <input type="text" name="search" [(ngModel)]="searchString">
   </div>
 
-  <div *ngFor="let client of clients">
-    <app-client [user]="client" (deleteUser)="deleteClient(client)"></app-client>
-  </div>
-
+  <table>
+    <thead>
+    <th>id</th>
+    <th>email</th>
+    <th>first name</th>
+    <th>last name</th>
+    <th>birth date</th>
+    <th>phone number</th>
+    <th>industry</th>
+    <th>subcategory</th>
+    <th>delete</th>
+    </thead>
+    <tbody>
+    <tr *ngFor="let client of clients | filter:searchString | paginate: { itemsPerPage: 5, currentPage: p}">
+      <td>{{client.id}}</td>
+      <td>{{client.email}}</td>
+      <td>{{client.clientInfo.firstName}}</td>
+      <td>{{client.clientInfo.lastName}}</td>
+      <td>{{client.clientInfo.birthDay}}</td>
+      <td>{{client.clientInfo.telephoneNumber}}</td>
+      <td>{{client.clientInfo.industry}}</td>
+      <td>{{client.clientInfo.subCategory}}</td>
+      <td><button (click)="deleteClient(client)">Delete client</button></td>
+    </tr>
+    </tbody>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </table>
 </div>
