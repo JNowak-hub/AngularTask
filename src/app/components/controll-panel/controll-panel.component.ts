@@ -15,9 +15,6 @@ export class ControllPanelComponent implements OnInit {
 
   clients: ClientModel[];
   searchString: string;
-  industries: Industry[] = [new Media(), new Travel(), new Finances()];
-  selectedIndustry: Industry;
-  selectedSubcategory: string;
   p = 1;
 
   constructor(private clientService: ClientService) {
@@ -25,23 +22,6 @@ export class ControllPanelComponent implements OnInit {
 
   ngOnInit(): void {
     this.clientService.getClientsFromApi().subscribe(res => this.clients = res);
-  }
-
-  logEmit(value: string): void {
-    this.selectedSubcategory = value;
-  }
-
-  filterByIndustryAndCategory(selectedIndustry: Industry, selectedSubcategory: string): void {
-    this.clients = this.clients.filter(res => {
-      res.clientInfo.industry.match(selectedIndustry.name);
-    });
-  }
-
-  isIndustrySelected(): boolean {
-    if (typeof this.selectedIndustry !== 'undefined') {
-      return true;
-    }
-    return false;
   }
 
   deleteClient(client: ClientModel): void {

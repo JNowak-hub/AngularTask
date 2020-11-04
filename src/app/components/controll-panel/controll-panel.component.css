@@ -38,9 +38,9 @@ table td, table th {
   padding: 8px;
 }
 
-table tr:nth-child(even){background-color: #f2f2f2;}
+table tr:nth-child(even){background-color: #7586ba;}
 
-table tr:nth-child(odd){background-color: #55575a;}
+table tr:nth-child(odd){background-color: #fafbfc;}
 
 
 table tr:hover {background-color: #a6bcec;}
@@ -49,6 +49,6 @@ table th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
-  background-color: #4CAF50;
+  background-color: #4c65af;
   color: white;
 }
