@@ -1,8 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {TokenModel} from '../../models/TokenModel';
 import {UserModel} from '../../models/UserModel';
-import {Router} from '@angular/router';
 import {RegisteryService} from '../../services/registration/registery.service';
 
 @Component({
@@ -32,7 +29,7 @@ export class RegisterUserComponent implements OnInit {
     }
   }
 
-  private validateForm(): boolean {
+  validateForm(): boolean {
     if (!this.validatePassword(this.password) || !this.validateEmail(this.email)) {
       if (!this.validatePassword(this.password)) {
         this.passwordIsValid = false;

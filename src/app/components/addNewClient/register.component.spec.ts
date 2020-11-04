@@ -120,7 +120,7 @@ describe('RegisterComponent', () => {
   });
 
   it('when submit button clicked validation called', () => {
-    spyOn(component, 'onSubmit');
+    spyOn(component, 'isFormValid');
     const submit = de.query(By.css('input[type="submit"]')).nativeElement;
     submit.click();
 

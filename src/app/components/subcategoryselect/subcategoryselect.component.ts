@@ -15,7 +15,6 @@ export class SubcategoryselectComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.selectedIndustry.name);
   }
 
   emmitValue(value: string ): void {
